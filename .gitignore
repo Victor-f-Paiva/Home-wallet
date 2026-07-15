@@ -88,6 +88,45 @@ project.fragment.lock.json
 artifacts/
 .artifacts/
 
+# builds and others
+.dotnet/
+*.local.settings.json
+publish/
+*.pubxml
+*.pubxml.user
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+.idea/
+[Db]bin/
+[Db]obj/
+[Db]out/
+
+node_modules/
+jspm_packages/
+web_modules/
+build/
+dist/
+out-tsc/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.eslintcache
+.stylelintcache
+.next/
+.nuxt/
+.parcel-cache/
+
+#env
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+appsettings.Development.json
+
 # ASP.NET Scaffolding
 ScaffoldingReadMe.txt
 
