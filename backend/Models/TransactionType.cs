@@ -2,7 +2,7 @@ namespace backend.Models
 {
     public enum TransactionType
     {
-        Revenue,
-        Expense
+        Income, //0 at json
+        Expense //1 at json
     }
 }
