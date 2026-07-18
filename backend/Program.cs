@@ -1,5 +1,6 @@
 using backend.Data;
 using backend.Routes;
+using backend.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//Register UserServices into DI
+builder.Services.AddScoped<UserService>();
 
 // Configuring AppDbContexto to use SQLite and the DB
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite("Data Source= HomeWallet.sqlite"));
