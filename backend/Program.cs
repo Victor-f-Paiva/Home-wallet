@@ -23,6 +23,7 @@ if (app.Environment.IsDevelopment())
 
 // Routes for Users and Transaction
 UsersRoute.UsersRoutes(app);
+TransactionRoutes.TransactionRoute(app);
 
 
 app.UseHttpsRedirection();
