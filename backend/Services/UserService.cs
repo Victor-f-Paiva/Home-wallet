@@ -1,29 +1,36 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using backend.Data;
 using backend.DTOs;
 using backend.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
 
 namespace backend.Services
 {
+    /// <summary>
+    /// Serves as the logic of the financial report of House Expenses that will be given for the user
+    /// </summary>
     public class UserService
     {
         //Injection to access users and transactions
         private readonly AppDbContext _context;
 
 
-        //constructor to access users and transactions
+        //constructor made to fill as non null value of the context
         public UserService(AppDbContext context)
         {
             _context = context;
         }
 
 
-        //function that return the list of users with their expenses and the total sum of each
+        /// <summary>
+        /// Business Rules:
+        /// <remarks>
+        /// - List all users registered, 
+        /// - Show the total of income, expenses and balance (income - expenses) of each user
+        /// - At the end, must be showned the total of income, expenses and net balance.
+        /// Generates a financial report of all expenses, income and net balance of the House
+        /// </remarks>
+        /// </summary>
+        /// <returns>A financial report of <see cref="FinancialReportResponse"/></returns>
         public async Task<FinancialReportResponse> GetHouseExpenses()
         {
             //attributes that shall be returned as a new Financial Report of the house
@@ -32,7 +39,7 @@ namespace backend.Services
             double totalExpenses= 0;
             double TotalNetBalance = 0;
 
-            //defining the list of users making a LEFT JOIN with user and transaction tables
+            //defining the list of users making a LEFT JOIN (.Include()) with UsersTable and TransactionsTable
             List<Users> listOfUsers = await _context.UsersTable
             .Include(u => u.Transactions).ToListAsync();
             

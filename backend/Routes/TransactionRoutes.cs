@@ -5,25 +5,32 @@ using Microsoft.EntityFrameworkCore;
 
 namespace backend.Routes
 {
+    /// <summary>
+    /// Represents the class that maps the endpoints of Transactions
+    /// </summary>
     public static class TransactionRoutes
     {
+        /// <summary>
+        /// Manages the transaction routes
+        /// </summary>
+        /// <param name="app">Represents the web application to map the routes</param>
         public static void TransactionRoute(WebApplication app)
         {
-            // creating a fixed route
+            // making a route to avoid bolierplate
             var route = app.MapGroup("Transaction");
 
             //POST
             route.MapPost("", 
             async (TransactionRequest req, AppDbContext context) =>
             {
-                //validating if userIs exists
+                // User Id must exists to create a new register
                 var user = await context.UsersTable.FindAsync(req.userId);
                 if (user == null)
                 {
                     return Results.NotFound($"User with id {req.userId} Not Found");
                 }
 
-                //logic that permit under 18 only register expenses.
+                // Under 18 can only register expenses
                 if (user.Age < 18 && req.type == TransactionType.Income)
                 {
                     return Results.BadRequest("Users under 18 years old can only register expenses");

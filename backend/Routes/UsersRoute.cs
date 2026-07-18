@@ -2,19 +2,22 @@ using backend.Data;
 using backend.DTOs;
 using backend.Models;
 using backend.Services;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
 namespace backend.Routes
 {
     /// <summary>
-    /// Class that has the endpoints of Users
+    /// Represents the class that maps the endpoints of Users
     /// </summary> 
     public static class UsersRoute
     {
+        /// <summary>
+        /// Manages the user routes
+        /// </summary>
+        /// <param name="app">Represents the web application to map the routes</param>
         public static void UsersRoutes(WebApplication app)
         {
-            // making a unchenginble route
+            // making a route to avoid bolierplate
             var route = app.MapGroup("Users");
 
             //POST
