@@ -1,6 +1,7 @@
 using backend.Data;
 using backend.DTOs;
 using backend.Models;
+using backend.Services;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
@@ -59,6 +60,14 @@ namespace backend.Routes
                 context.UsersTable.Remove(user);
                 await context.SaveChangesAsync();
                 return Results.Ok($"Family user, id {id}, removed");
+            });
+
+            //GET ALL USERS WITH TRANSACTIONS
+            route.MapGet("/HouseExpenses",
+            async (UserService service) =>
+            {
+                var report = await service.GetHouseExpenses();
+                return Results.Ok(report);
             });
         }
     }
