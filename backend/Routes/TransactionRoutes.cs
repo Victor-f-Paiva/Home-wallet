@@ -23,6 +23,12 @@ namespace backend.Routes
                     return Results.NotFound($"User with id {req.userId} Not Found");
                 }
 
+                //logic that permit under 18 only register expenses.
+                if (user.Age < 18 && req.type == TransactionType.Income)
+                {
+                    return Results.BadRequest("Users under 18 years old can only register expenses");
+                } 
+
                 //creating and saving the transaction
                 var transaction = new Transaction(req.description, req.value, req.type, req.userId);
                 await context.TransactionsTable.AddAsync(transaction);
