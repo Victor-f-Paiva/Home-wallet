@@ -3,7 +3,7 @@ namespace backend.Models
     public class Users
     {
         public int Id { get; init; }
-        public string? Name {get; set; }
+        public string Name{get; set; } = null!;
         public int Age { get; set; }
         // propertie to allow one user have many transactions
         public ICollection<Transaction> Transactions{get; set;} = new List<Transaction>();
