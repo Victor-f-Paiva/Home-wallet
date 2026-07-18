@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace backend.Models
@@ -5,7 +6,7 @@ namespace backend.Models
     public class Transaction 
     {
         public int Id { get; set; }
-        public string? Description {get; set; }
+        public string Description {get; set; }
         public double Value { get; set; }
         public  TransactionType Type { get; set; }
         //FK to find users by Id
@@ -14,14 +15,18 @@ namespace backend.Models
         public Users? Users {get; set; }
 
         // empty constructor
-        public Transaction(){}
+        public Transaction()
+        {
+            Description = "";
+        }
 
 
-        public Transaction(string description, double value, TransactionType type)
+        public Transaction(string description, double value, TransactionType type, int userId)
         {
             Description = description;
             Value = value;
             Type = type;
+            UserId = userId;
         }
 
     }
