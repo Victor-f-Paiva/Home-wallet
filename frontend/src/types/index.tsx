@@ -21,6 +21,15 @@ export interface UserRequest{
 }
 
 
+// Set interface for a user response
+export interface UserReponse{
+    id: number;
+    name: string;
+    age: number;
+    userList: any[];
+}
+
+
 // Set response for one user with his transactions
 export interface UserReport{
     id: number,
