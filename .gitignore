@@ -474,3 +474,14 @@ FodyWeavers.xsd
 *.db-wal
 *.sqlite-wal
 *.sqlite-shm
+
+# React + Typescript
+.vite/
+.turbo/
+.cache/
+*.log
+tsconfig.tsbuildinfo
+.remix/
+.astro/
+.pnp/
+.pnp.js
